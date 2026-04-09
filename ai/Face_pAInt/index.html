@@ -7,7 +7,7 @@
 <body>
     ECS7022P: Computational Creativity Project
     <h1>Face pAInt</h1>
-<table width="90%"><tr><td width="30%" valign="top">
+<table width="95%"><tr><td width="33%" valign="top">
 <h2>Overview</h2>
 <p>The aim of this project was to create/assist with generative fine-art using computational photography techniques to extend a traditional studio shoot. This is achieved by training a diffusion model to understand the concept that an image/pattern which typically would appear as a background can be applied onto a face. For this to work, model needs to learn the 3d semantic map of the face.
 </p><p>
@@ -15,24 +15,34 @@ Images are the artefacts which can be a upscaled to high resolution as a final i
 </p><p>
 The motivation for this project was to create vibrant portraits using the look of paint on a face. Inspiration had come from images on-line; however, many of the most vibrant ones were clearly AI. I wanted to do this using real people. It reminded me of a photo shoot in the past with a make-up artist experimenting. I didn't know what would come out of the changing room. In post production I could do more, but I was limited to working on a 2d plane, where a true make-up artist worked on a 3d face.
 </p><p>
-    <center>
-<a href="https://www.flickr.com/photos/danbachmann/20592795906/in/album-72157633520086598" title="photo inspired"><img src="https://live.staticflickr.com/5694/20592795906_6b40b68a67_w.jpg" width="400" height="155"/></a>
-    </center>
-    </p><p>
 This system touches on all of these points: intense face painting images, multiple random variations on a single pose and near pixel bound output so the output can be pulled into layers for further artistic expression maintaining the 3d feeling. The best post-production steps could be bright into the output pipeline later.
 </p>
-</td><td width="30%">
-<p> </p>
-<a href="training.htm"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt="">Training</a>
-<br>
-<a href="use_notes.htm"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt="">Use Notes</a>
-<br>
-<a href="value_added.htm"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt="">Value Added</a>
-<br>
-<a href="output/index.htm"><img src="paint_7000_target_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt="">Example Outputs</a>
-<br>
-<a href="output/processed/index.htm"><img src="output/processed/brnk73aflayers_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt="">Super high resolution</a>
+</td><td width="66">
+<a href="https://www.flickr.com/photos/danbachmann/20592795906/in/album-72157633520086598" title="photo inspired"><img src="https://live.staticflickr.com/5694/20592795906_6b40b68a67_w.jpg" width="400" height="155"/></a>
+studio inspiration (left) and processed system output (below)<br>
+    <img width="45%" src="output/processed/brnk73painted_std.jpg">
+<!--</td><td width="33%">-->
+    <img width="45%" src="output/processed/mikeinstonesuit10_std.jpg">    
+</td>
+</tr></table>
 
+<h2>Sections</h2>
+<table><tr>
+<td align="center">
+<a href="training.htm"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Training</a>
+</td>
+<td align="center>
+<a href="use_notes.htm"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Use Notes</a>
+</td>
+<td align="center>
+<a href="value_added.htm"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added</a>
+</td>
+<td align="center>
+<a href="output/index.htm"><img src="paint_7000_target_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Example Outputs</a>
+</td>
+<td align="center>
+<a href="output/processed/index.htm"><img src="output/processed/brnk73aflayers_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Super high resolution</a>
+</td></tr></table>
 
 base line - comparison without custom training
 https://colab.research.google.com/drive/14eagF7VNtg0Wa2-MElKthsj3P2ty9MqG?usp=sharing
@@ -41,6 +51,198 @@ https://colab.research.google.com/drive/14eagF7VNtg0Wa2-MElKthsj3P2ty9MqG?usp=sh
 
 more images and post-processing experimentation area
 https://colab.research.google.com/drive/1NQ5id-sh13jpPI-9LiwSQeGQ_KCW8Wtc?usp=sharing
-</td></tr></table>
+
+
+
+
+
+
+<h3>Training</h3>
+A pattern with an opacity mask was rendered onto a face. The model would be trained on only the original clean face (1st column) and the painted face (last column).
+<table>
+<tr>
+<td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_input.png</font></td>
+<td align="center"><a href="paint_5913_mask_std.jpg"><img src="paint_5913_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt="ASCII"></a><br><font size="-1">Paint_5913_mask.jpg</font></td>
+<td align="center"><a href="paint_5913_pattern_std.jpg"><img src="paint_5913_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5913_pattern.jpg</font></td>
+<td align="center"><a href="paint_5913_target_std.jpg"><img src="paint_5913_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_target.png</font></td></tr><tr>
+<td align="center"><a href="paint_5915_input_std.jpg"><img src="paint_5915_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5915_input.png</font></td>
+<td align="center"><a href="paint_5915_mask_std.jpg"><img src="paint_5915_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5915_mask.jpg</font></td>
+<td align="center"><a href="paint_5915_pattern_std.jpg"><img src="paint_5915_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5915_pattern.jpg</font></td>
+<td align="center"><a href="paint_5915_target_std.jpg"><img src="paint_5915_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5915_target.png</font></td></tr><tr>
+<td align="center"><a href="paint_5919_input_std.jpg"><img src="paint_5919_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5919_input.png</font></td>
+<td align="center"><a href="paint_5919_mask_std.jpg"><img src="paint_5919_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5919_mask.jpg</font></td>
+<td align="center"><a href="paint_5919_pattern_std.jpg"><img src="paint_5919_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5919_pattern.jpg</font></td>
+<td align="center"><a href="paint_5919_target_std.jpg"><img src="paint_5919_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5919_target.png</font></td>
+
+</tr>
+</table>
+Having a sense of diversity in the model figures was a consideration through out the process.<br>
+<a href="paint_0001_input_std.jpg"><img src="paint_0001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_2001_input_std.jpg"><img src="paint_2001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_3000_input_std.jpg"><img src="paint_3000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_5001_input_std.jpg"><img src="paint_5001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7001_input_std.jpg"><img src="paint_7001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_8000_input_std.jpg"><img src="paint_8000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<hr>
+
+
+<h2>additional notes</h2>
+<h3>Face Paint Patterns</h3>
+<b>pmgid#</b> indicates the code which was embeded in the description during training which may steer the diffusion model towards that particular face paint pattern.
+<br>
+<h4>
+algoritmically generated</h4>
+<table>
+<tr>
+<td align="center"><a href="pimgid1_std.jpg"><img src="pimgid1_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid1</font></td>
+<td align="center"><a href="pimgid20_std.jpg"><img src="pimgid20_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid20</font></td>
+<td align="center"><a href="pimgid21_std.jpg"><img src="pimgid21_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid21</font></td>
+<td align="center"><a href="pimgid25_std.jpg"><img src="pimgid25_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid25</font></td>
+<td align="center"><a href="pimgid27_std.jpg"><img src="pimgid27_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid27</font></td>
+<td align="center"><a href="pimgid30_std.jpg"><img src="pimgid30_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid30</font></td>
+</tr>
+<tr>
+<td align="center"><a href="pimgid37_std.jpg"><img src="pimgid37_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid37</font></td>
+<td align="center"><a href="pimgid39_std.jpg"><img src="pimgid39_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid39</font></td>
+<td align="center"><a href="pimgid9_std.jpg"><img src="pimgid9_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid9</font></td>
+<td align="center"><a href="pimgid10_std.jpg"><img src="pimgid10_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid10 / pimgid32</font></td>
+<td align="center"><a href="pimgid38_std.jpg"><img src="pimgid38_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid38</font></td>
+<td></td></tr>
+</table>
+<h4>
+noise generated</h4>
+<table>
+<tr><td align="center"><a href="pimgid11_std.jpg"><img src="pimgid11_thm.jpg" vspace="5" hspace="5" width="160" height="160" border="1" alt=""></a><br><font size="-1">pimgid11</font></td>
+<td align="center"><a href="pimgid8_std.jpg"><img src="pimgid8_thm.jpg" vspace="5" hspace="5" width="160" height="160" border="1" alt=""></a><br><font size="-1">pimgid8</font></td>
+<td align="center"><a href="pimgid22_std.jpg"><img src="pimgid22_thm.jpg" vspace="5" hspace="5" width="137" height="160" border="1" alt=""></a><br><font size="-1">pimgid22</font></td>
+<td align="center"><a href="pimgid74_std.jpg"><img src="pimgid74_thm.jpg" vspace="5" hspace="5" width="137" height="160" border="1" alt=""></a><br><font size="-1">pimgid74</font></td>
+<td align="center"><a href="pimgid26_std.jpg"><img src="pimgid26_thm.jpg" vspace="5" hspace="5" width="137" height="160" border="1" alt=""></a><br><font size="-1">pimgid26</font></td>
+<td align="center"><a href="pimgid43_std.jpg"><img src="pimgid43_thm.jpg" vspace="5" hspace="5" width="137" height="160" border="1" alt=""></a><br><font size="-1">pimgid43</font></td>
+<td align="center"><a href="pimgid61_std.jpg"><img src="pimgid61_thm.jpg" vspace="5" hspace="5" width="137" height="160" border="1" alt=""></a><br><font size="-1">pimgid61</font></td>
+<td align="center"><a href="pimgid69_std.jpg"><img src="pimgid69_thm.jpg" vspace="5" hspace="5" width="160" height="160" border="1" alt=""></a><br><font size="-1">pimgid54 / pimgid69</font></td>
+<td align="center"><a href="pimgid71_std.jpg"><img src="pimgid71_thm.jpg" vspace="5" hspace="5" width="160" height="160" border="1" alt=""></a><br><font size="-1">pimgid71</font></td>
+<td align="center"><a href="pimgid77_std.jpg"><img src="pimgid77_thm.jpg" vspace="5" hspace="5" width="160" height="160" border="1" alt=""></a><br><font size="-1">pimgid77</font></td>
+</tr>
+</table>
+<h4>
+photography based</h4>
+<table>
+<tr>
+<td align="center"><a href="pimgid3_std.jpg"><img src="pimgid3_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid3</font></td>
+<td align="center"><a href="pimgid4_std.jpg"><img src="pimgid4_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid4</font></td>
+<td align="center"><a href="pimgid6_std.jpg"><img src="pimgid6_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid6</font></td>
+<td align="center"><a href="pimgid7_std.jpg"><img src="pimgid7_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid7 / pimgid36</font></td>
+<td align="center"><a href="pimgid12_std.jpg"><img src="pimgid12_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid12</font></td>
+<td align="center"><a href="pimgid13_std.jpg"><img src="pimgid13_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid13 / pimgid24</font></td>
+<td align="center"><a href="pimgid14_std.jpg"><img src="pimgid14_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid14</font></td>
+<td align="center"><a href="pimgid15_std.jpg"><img src="pimgid15_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid15</font></td>
+</tr><tr>
+<td align="center"><a href="pimgid16_std.jpg"><img src="pimgid16_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid16</font></td>
+<td align="center"><a href="pimgid17_std.jpg"><img src="pimgid17_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid17</font></td>
+<td align="center"><a href="pimgid18_std.jpg"><img src="pimgid18_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid18</font></td>
+<td align="center"><a href="pimgid23_std.jpg"><img src="pimgid23_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid23</font></td>
+<td align="center"><a href="pimgid28_std.jpg"><img src="pimgid28_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid28</font></td>
+<td align="center"><a href="pimgid29_std.jpg"><img src="pimgid29_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid29</font></td>
+<td align="center"><a href="pimgid31_std.jpg"><img src="pimgid31_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid31</font></td>
+<td></td>
+</tr><tr>
+<td align="center"><a href="pimgid33_std.jpg"><img src="pimgid33_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid33</font></td>
+<td align="center"><a href="pimgid34_std.jpg"><img src="pimgid34_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid34</font></td>
+<td align="center"><a href="pimgid40_std.jpg"><img src="pimgid40_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid40</font></td>
+<td align="center"><a href="pimgid41_std.jpg"><img src="pimgid41_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid41</font></td>
+<td align="center"><a href="pimgid42_std.jpg"><img src="pimgid42_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid42</font></td>
+<td align="center"><a href="pimgid44_std.jpg"><img src="pimgid44_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid44 / pimgid48</font></td>
+<td align="center"><a href="pimgid56_std.jpg"><img src="pimgid56_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" alt=""></a><br><font size="-1">pimgid56</font></td>
+<td></td>
+</tr>
+</table>
+<hr>
+
+
+<h3>Dataset</h3>
+An additional value added component was a creation of dataset consisting of nearly 10,000 image sets rendered in contolled lighting with a neutral grey background. For each image there is the original 512x512 pixel portrait, a depth map, a painted face and the image used to create the face paint.
+The depth map was not used in this project; however, it would be useful for other training considering facial geometry.
+<br/>
+<a href="paint_7000_input_std.jpg"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7000_depth_std.jpg"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7000_target_std.jpg"><img src="paint_7000_target_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<br/>
+Dataset download links:<br>
+<a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb) (HTTP download)</a>
+<a href="https://drive.google.com/file/d/1AjXFlpbBnnUpTMnnhWmoGuxl2Ax8onD3/view?usp=sharing">(Google Drive)</a>
+- this also includes validation/test images not used in training, plus some high resolution images for high resolution demonstrations.
+<br>
+<a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb) (Google Drive)</a>
+<hr>
+
+
+
+
+<center>
+<h1>Output</h1>
+These images show the original photograph/render, the direct system output and for some, upsampled and processed.
+<br/>
+<img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/processed/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/mikeinstonesuit10_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_mikeinstonesuit10_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/processed/mikeinstonesuit10_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/studiopod2506-26_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_studiopod2506-26_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/processed/studiopod2506-26_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<!--
+<img src="output/brnk73_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_brnk73_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>-->
+<img src="output/brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/processed/brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_suki1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/processed/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+
+
+<img src="output/l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/l1001748_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_l1001748_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<br/>
+<img src="output/paint_5816_input_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_paint_5816_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<!--<br/>
+<img src="output/paint_5833_input_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+<img src="output/ai_output1_paint_5833_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
+-->
+<hr>
+</center>
+
+
+
+
+<center>
+<h1></h1>
+Click on any photo to see a larger version
+<hr>
+<a href="output/processed/brnk73painted_std.jpg"><img src="output/processed/brnk73painted_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/brnk73aflayers_std.jpg"><img src="output/processed/brnk73aflayers_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/mikeinstonesuit10_std.jpg"><img src="output/processed/mikeinstonesuit10_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/ldan0277_std.jpg"><img src="output/processed/ldan0277_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/brnk74_std.jpg"><img src="output/processed/brnk74_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/studiopod2506-26_std.jpg"><img src="output/processed/studiopod2506-26_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+<a href="output/processed/suki_high-resolution1_std.jpg"><img src="output/processed/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" title="" alt=""></a>
+
+<hr>
+</center>
 </body>
 </html>
