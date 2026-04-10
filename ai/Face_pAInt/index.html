@@ -40,7 +40,7 @@
     ECS7022P: Computational Creativity Project
     <h1>Face pAInt</h1>
 <table width="95%"><tr><td width="33%" valign="top">
-<h2>Overview</h2>
+<h2 id="overview">Overview</h2>
 <p>The aim of this project was to create/assist with generative fine-art using 
     computational photography techniques to extend a traditional studio shoot. 
     This is achieved by training a diffusion model to understand the concept that an image/pattern which typically would appear as a background can be applied onto a face. For this to work,
@@ -53,19 +53,19 @@ The motivation for this project was to create vibrant portraits using the look o
 This system touches on all of these points: intense face painting images, multiple random variations on a single pose and near pixel bound output so the output can be pulled into layers for further artistic expression maintaining the 3d feeling. The best post-production steps could be bright into the output pipeline later.
 </p>
 
-<h2>Sections</h2>
+<h3>Sections</h3>
 <table><tr>
 <td align="center">
-<a href="training.htm"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Training</a>
+<a href="#training"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Training</a>
 </td>
 <td align="center">
-<a href="use_notes.htm"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Use Notes</a>
+<a href="#patterns"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Patterns</a>
 </td>
 <td align="center">
-<a href="value_added.htm"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added</a>
+<a href="#value"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added</a>
 </td>
 <td align="center">
-<a href="output/index.htm"><img src="output/processed/brnk73aflayers_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Example Output</a>
+<a href="#output"><img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Example Output</a>
 </td></tr></table>
 
 </td><td width="66">
@@ -91,7 +91,7 @@ https://colab.research.google.com/drive/1NQ5id-sh13jpPI-9LiwSQeGQ_KCW8Wtc?usp=sh
 
 
 
-<h3>Training</h3>
+<h2 id="training">Training</h2>
 A pattern with an opacity mask was rendered onto a face. The model would be trained on only the original clean face (1st column) and the painted face (last column).
 <table>
 <tr>
@@ -120,9 +120,9 @@ Having a sense of diversity in the model figures was a consideration through out
 <hr>
 
 
-<h2>additional notes</h2>
+<h3 id="patterns">paint patterns</h3>
 <h3>Face Paint Patterns</h3>
-<b>pmgid#</b> indicates the code which was embeded in the description during training which may steer the diffusion model towards that particular face paint pattern.
+<b>pmgid#</b> indicates the code which was embeded in the description during training, though it seems to have little imact..
 <br>
 <h4>algorithmically generated</h4>
 <div class="gallery-grid">
@@ -308,15 +308,15 @@ Having a sense of diversity in the model figures was a consideration through out
     </div>
 </div>
 
-
+<h2 id="value">Value Added</h2>
 <h3>Dataset</h3>
 An additional value added component was a creation of dataset consisting of nearly 10,000 image sets rendered in contolled lighting with a neutral grey background. For each image there is the original 512x512 pixel portrait, a depth map, a painted face and the image used to create the face paint.
 The depth map was not used in this project; however, it would be useful for other training considering facial geometry.
 <br/>
-<a href="paint_7000_input_std.jpg"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_7000_depth_std.jpg"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_7000_target_std.jpg"><img src="paint_7000_target_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7000_input_std.jpg"><img src="paint_7000_input_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+<a href="paint_7000_depth_std.jpg"><img src="paint_7000_depth_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+<a href="paint_7000_target_std.jpg"><img src="paint_7000_target_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+<a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 <br/>
 Dataset download links:<br>
 <a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb) (HTTP download)</a>
@@ -330,7 +330,7 @@ Dataset download links:<br>
 
 
 <center>
-<h1>Output</h1>
+<h2 id="output">Output</h2>
 These images show the original photograph/render, the direct system output and for some, upsampled and processed.
 <br/>
 <img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
@@ -382,7 +382,7 @@ These images show the original photograph/render, the direct system output and f
 <img src="output/ai_output1_paint_5833_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 -->
 <p>
-If you have not clicked on a processed image to see the high resolution (about 3000x3000 pixel image) suitable for printing or you would just like to see the <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
+If you have not clicked on a processed image to see the high resolution (about 3000x3000 pixel image) suitable for printing or you would just like to see these and a few more <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
 </p>
 <hr>
 </center>
