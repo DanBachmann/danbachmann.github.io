@@ -36,7 +36,7 @@
 }
 </style>
 </head>
-<body bgcolor="#dbdbdb">
+<body bgcolor="#dbdbdb" color="black">
     ECS7022P: Computational Creativity Project
     <h1>Face pAInt</h1>
 <table width="95%"><tr><td width="33%" valign="top">
@@ -56,13 +56,16 @@ This system touches on all of these points: intense face painting images, multip
 <h3>Sections</h3>
 <table><tr>
 <td align="center">
-<a href="#training"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Training</a>
+<a href="#eval"><img src="paint_5913_pattern_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Evaluation</a>
 </td>
 <td align="center">
-<a href="#patterns"><img src="paint_7000_ai_ready_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Patterns</a>
+<a href="#value"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added: Models</a>
 </td>
 <td align="center">
-<a href="#value"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added</a>
+<a href="#datasets"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added: Datasets</a>
+</td>
+<td align="center">
+<a href="#output"><img src="paint_7000_output_mask.png" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Post Processing</a>
 </td>
 <td align="center">
 <a href="#output"><img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Example Output</a>
@@ -88,41 +91,21 @@ https://colab.research.google.com/drive/1NQ5id-sh13jpPI-9LiwSQeGQ_KCW8Wtc?usp=sh
 
 
 <hr>
-
-<h2 id="training">Training</h2>
-A pattern with an opacity mask was rendered onto a face. The model would be trained on only the original clean face (1st column) and the painted face (last column).
+<h2 id="value">Value Added</h2>
+<h3>Trained models</h3>
 <center>
+<table><tr>
+<td><a href="paint_7000_input.png"><img src="paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td><td><a href="paint_7000_target.png"><img src="paint_7000_target.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td></tr></table>
 
-<table>
-<tr>
-<td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_input.png</font></td>
-<td align="center"><a href="paint_5913_mask_std.jpg"><img src="paint_5913_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt="ASCII"></a><br><font size="-1">Paint_5913_mask.jpg</font></td>
-<td align="center"><a href="paint_5913_pattern_std.jpg"><img src="paint_5913_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5913_pattern.jpg</font></td>
-<td align="center"><a href="paint_5913_target_std.jpg"><img src="paint_5913_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_target.png</font></td></tr><tr>
-<td align="center"><a href="paint_5915_input_std.jpg"><img src="paint_5915_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5915_input.png</font></td>
-<td align="center"><a href="paint_5915_mask_std.jpg"><img src="paint_5915_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5915_mask.jpg</font></td>
-<td align="center"><a href="paint_5915_pattern_std.jpg"><img src="paint_5915_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5915_pattern.jpg</font></td>
-<td align="center"><a href="paint_5915_target_std.jpg"><img src="paint_5915_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5915_target.png</font></td></tr><tr>
-<td align="center"><a href="paint_5919_input_std.jpg"><img src="paint_5919_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5919_input.png</font></td>
-<td align="center"><a href="paint_5919_mask_std.jpg"><img src="paint_5919_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5919_mask.jpg</font></td>
-<td align="center"><a href="paint_5919_pattern_std.jpg"><img src="paint_5919_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">Paint_5919_pattern.jpg</font></td>
-<td align="center"><a href="paint_5919_target_std.jpg"><img src="paint_5919_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5919_target.png</font></td>
-
-</tr>
-</table>
-Having a sense of diversity in the model figures was a consideration through out the process.<br>
-<a href="paint_0001_input_std.jpg"><img src="paint_0001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_2001_input_std.jpg"><img src="paint_2001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_3000_input_std.jpg"><img src="paint_3000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_5001_input_std.jpg"><img src="paint_5001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_7001_input_std.jpg"><img src="paint_7001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<a href="paint_8000_input_std.jpg"><img src="paint_8000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-<hr>
-</center>
+<table><tr>
+<td><a href="paint_7000_input.png"><img src="paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td><td><a href="paint_7000_depth.png"><img src="paint_7000_depth.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td></tr></table>
 
 <h3 id="patterns">Face Paint Patterns</h3>
 <b>pmgid#</b> indicates the code which was embeded in the description during training, though it seems to have little imact.
-<center>
 <br>
 <h4>algorithmically generated</h4>
 <div class="gallery-grid">
@@ -307,25 +290,67 @@ Having a sense of diversity in the model figures was a consideration through out
         <div class="gallery-caption">pimgid56</div>
     </div>
 </div>
-<hr>
+The patterns were applied using opacity masks so the paint effect would not always cover the whole face to reveal some skin and also to be feathered along the hairline and neck to avoid a sharp, unnatural edge.<br>
+<a href="masks/default_1_std.jpg"><img src="masks/default_1_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="" alt=""></a>
+<a href="masks/mask_a1_std.jpg"><img src="masks/mask_a1_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="" alt=""></a>
+<a href="masks/mask_liquid_2_std.jpg"><img src="masks/mask_liquid_2_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="ASCII" alt="ASCII"></a>
+<a href="masks/mask_liquid_3_std.jpg"><img src="masks/mask_liquid_3_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="ASCII" alt="ASCII"></a>
+<a href="masks/mask_tribal_2_std.jpg"><img src="masks/mask_tribal_2_thm.jpg" vspace="5" hspace="5" width="160" height="107" border="1" title="" alt=""></a>
+<a href="masks/mask_tribal_3_std.jpg"><img src="masks/mask_tribal_3_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="" alt=""></a>
+<a href="masks/pattern_a2mono_std.jpg"><img src="masks/pattern_a2mono_thm.jpg" vspace="5" hspace="5" width="160" height="137" border="1" title="" alt=""></a>
+
 </center>
-<h2 id="value">Value Added</h2>
-<h3>Dataset</h3>
+<h3 id="datasets">Datasets</h3>
+An additional value added component was a creation of datasets rendered in contolled lighting with a neutral grey background.
+
+<h4>Dataset 1 - 3820 image sets</h4>
 <center>
-An additional value added component was a creation of dataset consisting of nearly 10,000 image sets rendered in contolled lighting with a neutral grey background. For each image there is the original 512x512 pixel portrait, a depth map, a painted face and the image used to create the face paint.
+Each image set has there is the original 512x512 pixel portrait,
+a depth map and a painted face. The dataset has two diferent lighting setups (one the mirror of the other).
 The depth map was not used in this project; however, it would be useful for other training considering facial geometry.
 <table><tr>
-<td><a href="paint_7000_input_std.jpg"><img src="paint_7000_input_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
-</td><td><a href="paint_7000_depth_std.jpg"><img src="paint_7000_depth_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
-</td><td><a href="paint_7000_target_std.jpg"><img src="paint_7000_target_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
-</td><td><a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+<td><a href="paint_7000_input.png"><img src="paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td><td><a href="paint_7000_depth.png"><img src="paint_7000_depth.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td><td><a href="paint_7000_target.png"><img src="paint_7000_target.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+<!--    
+</td><td><a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>-->
 </td></tr></table>
-<h4>Dataset download links</h4>
+<h5>Dataset 1 download links</h5>
 <a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb) (Google Drive)</a>
 <br>
 <a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb) (HTTP download)</a>
 <a href="https://drive.google.com/file/d/1AjXFlpbBnnUpTMnnhWmoGuxl2Ax8onD3/view?usp=sharing">(Google Drive)</a>
 - this also includes validation/test images not used in training, plus some high resolution images for high resolution demonstrations.
+
+</center>
+<h4>Dataset 2 - 1910 image sets</h4>
+<center>
+Each image set has there is the original 512x512 pixel portrait, the exr beautiy map for the portrait, the depthmap in exr format, an opacity mask applied to a pattern, the pattern applied, the painted face with the pattern + opacit mask applied,
+and the exr beautiy map for the painted face.
+<table>
+<tr>
+<td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_input.png</font></td>
+<td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913-input-beauty.exr</font></td>
+<td align="center"><a href="Paint_5913_depth.png"><img src="Paint_5913_depth.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913-input-depth.exr</font></td>
+<td align="center"><a href="paint_5913_mask_std.jpg"><img src="paint_5913_mask_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt="ASCII"></a><br><font size="-1">paint_5913_mask.png</font></td>
+<td align="center"><a href="paint_5913_pattern_std.jpg"><img src="paint_5913_pattern_thm.jpg" vspace="5" hspace="5" width="256" height="220" border="1" alt=""></a><br><font size="-1">paint_5913_pattern.png</font></td>
+<td align="center"><a href="paint_5913_target_std.jpg"><img src="paint_5913_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_target.png</font></td>
+<td align="center"><a href="paint_5913_target_std.jpg"><img src="paint_5913_target_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913-target-beauty.exr</font></td>
+</tr>
+</table>
+</center>
+
+<h4>Dataset diversity</h4>
+<center>
+The datasets are diversive with the figures used. Some of the faces in the models are shown below.<br>
+<a href="paint_0001_input_std.jpg"><img src="paint_0001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_2001_input_std.jpg"><img src="paint_2001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_3000_input_std.jpg"><img src="paint_3000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_5001_input_std.jpg"><img src="paint_5001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_7001_input_std.jpg"><img src="paint_7001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+<a href="paint_8000_input_std.jpg"><img src="paint_8000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
+</center>
+
 <hr>
 
 
