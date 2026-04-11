@@ -87,12 +87,12 @@ more images and post-processing experimentation area
 https://colab.research.google.com/drive/1NQ5id-sh13jpPI-9LiwSQeGQ_KCW8Wtc?usp=sharing
 
 
-
-
-
+<hr>
 
 <h2 id="training">Training</h2>
 A pattern with an opacity mask was rendered onto a face. The model would be trained on only the original clean face (1st column) and the painted face (last column).
+<center>
+
 <table>
 <tr>
 <td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a><br><font size="-1">Paint_5913_input.png</font></td>
@@ -118,11 +118,11 @@ Having a sense of diversity in the model figures was a consideration through out
 <a href="paint_7001_input_std.jpg"><img src="paint_7001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
 <a href="paint_8000_input_std.jpg"><img src="paint_8000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
 <hr>
+</center>
 
-
-<h3 id="patterns">paint patterns</h3>
-<h3>Face Paint Patterns</h3>
-<b>pmgid#</b> indicates the code which was embeded in the description during training, though it seems to have little imact..
+<h3 id="patterns">Face Paint Patterns</h3>
+<b>pmgid#</b> indicates the code which was embeded in the description during training, though it seems to have little imact.
+<center>
 <br>
 <h4>algorithmically generated</h4>
 <div class="gallery-grid">
@@ -307,9 +307,11 @@ Having a sense of diversity in the model figures was a consideration through out
         <div class="gallery-caption">pimgid56</div>
     </div>
 </div>
-
+<hr>
+</center>
 <h2 id="value">Value Added</h2>
 <h3>Dataset</h3>
+<center>
 An additional value added component was a creation of dataset consisting of nearly 10,000 image sets rendered in contolled lighting with a neutral grey background. For each image there is the original 512x512 pixel portrait, a depth map, a painted face and the image used to create the face paint.
 The depth map was not used in this project; however, it would be useful for other training considering facial geometry.
 <table><tr>
@@ -318,20 +320,20 @@ The depth map was not used in this project; however, it would be useful for othe
 </td><td><a href="paint_7000_target_std.jpg"><img src="paint_7000_target_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td><td><a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td></tr></table>
-Dataset download links:<br>
+<h4>Dataset download links</h4>
+<a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb) (Google Drive)</a>
+<br>
 <a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb) (HTTP download)</a>
 <a href="https://drive.google.com/file/d/1AjXFlpbBnnUpTMnnhWmoGuxl2Ax8onD3/view?usp=sharing">(Google Drive)</a>
 - this also includes validation/test images not used in training, plus some high resolution images for high resolution demonstrations.
-<br>
-<a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb) (Google Drive)</a>
 <hr>
 
 
+</center>
 
-
-<center>
 <h2 id="output">Output</h2>
 These images show the original photograph/render, the direct system output and for some, upsampled and processed.
+<center>
 <br/>
 <img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
