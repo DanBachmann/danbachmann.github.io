@@ -80,34 +80,27 @@ studio inspiration and processed system outputs below<br>
 </td>
 </tr></table>
 
-
-base line - comparison without custom training
-https://colab.research.google.com/drive/14eagF7VNtg0Wa2-MElKthsj3P2ty9MqG?usp=sharing
-
-
-
-more images and post-processing experimentation area
-https://colab.research.google.com/drive/1NQ5id-sh13jpPI-9LiwSQeGQ_KCW8Wtc?usp=sharing
-
-
 <hr>
 <h2 id="value">Value Added</h2>
 <h3>Trained models</h3>
-<center>
-<table><tr>
-<td><a href="Paint_7000_input.png"><img src="Paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
-</td><td><a href="Paint_7000_target.png"><img src="Paint_7000_target.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
-</td></tr></table>
 
+<center>
 <table><tr>
 <td><a href="Paint_7000_input.png"><img src="Paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td><td><a href="Paint_7000_depth.png"><img src="Paint_7000_depth.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td></tr></table>
-
+<a href="https://drive.google.com/drive/u/0/folders/1uHhm9OwB-LW42UrGcgWtnGIWLOHUps6U">ControlNet model download (Google Drive)</a>
+<table><tr>
+<td><a href="Paint_7000_input.png"><img src="Paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td><td><a href="Paint_7000_target.png"><img src="Paint_7000_target.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
+</td></tr></table>
+<a href="https://drive.google.com/drive/u/0/folders/15YmQzZnrjqkZftn3M9Xf5zPZvXYgBwRV">IP2P model download (Google Drive)</a><br>
+<a href="https://colab.research.google.com/drive/1nJLatBqBqLD4LPRU1PlyMFi6fePIHkw-?usp=sharing">How to use (Colab notebook)</a>
+</center>
 <h3 id="patterns">Face Paint Patterns</h3>
-<b>pmgid#</b> indicates the code which was embeded in the description during training, though it seems to have little imact.
+<b>pmgid#</b> indicates the code which was embeded in the description during training.
 <br>
-<h4>algorithmically generated</h4>
+<h4>random/algorithmically generated</h4>
 <div class="gallery-grid">
     <div class="gallery-item">
         <a href="pimgid1_std.jpg"><img src="pimgid1_thm.jpg" width="160" height="137" alt="pimgid1"></a>
@@ -316,9 +309,9 @@ The depth map was not used in this project; however, it would be useful for othe
 </td><td><a href="paint_7000_ai_ready_std.jpg"><img src="paint_7000_ai_ready_std.jpg" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>-->
 </td></tr></table>
 <h5>Dataset 1 download links</h5>
-<a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb) (Google Drive)</a>
+<a href="https://drive.google.com/file/d/1YRKCpqMpm9hKct1qGU4AsZZXri3Kb1KB/view?usp=drive_link">Full Dataset (3.3gb compressed) (Google Drive)</a>
 <br>
-<a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb) (HTTP download)</a>
+<a href="http://www.danbachmann.com/ai/Face_pAInt/Sample_Dataset.zip">Sample/demo Dataset (253mb compressed) (HTTP download)</a>
 <a href="https://drive.google.com/file/d/1AjXFlpbBnnUpTMnnhWmoGuxl2Ax8onD3/view?usp=sharing">(Google Drive)</a>
 - this also includes validation/test images not used in training, plus some high resolution images for high resolution demonstrations.
 
@@ -327,6 +320,7 @@ The depth map was not used in this project; however, it would be useful for othe
 <center>
 Each image set has there is the original 512x512 pixel portrait, the exr beautiy map for the portrait, the depthmap in exr format, an opacity mask applied to a pattern, the pattern applied, the painted face with the pattern + opacit mask applied,
 and the exr beautiy map for the painted face.
+(32gb compresssed)
 <table>
 <tr>
 <td align="center"><a href="paint_5913_input_std.jpg"><img src="paint_5913_input_thm.jpg" vspace="5" hspace="5" width="128" height="128" border="1" alt=""></a><br><font size="-1">Paint_5913_input.png</font><br>
@@ -356,10 +350,10 @@ The datasets are diversive with the figures used. Some of the faces in the model
 
 <h2 id="output">Output</h2>
 <center>
-These images show the
-original photograph/render
-and
-upsampled and processed.
+These faces are original photographs and not part of the training datasets. The images show the
+original photo,
+model output,
+and the final version after upsampling and final processing.
 <br/>
 <img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
@@ -374,7 +368,6 @@ upsampled and processed.
 <a href="output/processed/studiopod2506-26_std.jpg"><img src="output/processed/studiopod2506-26_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""></a>
 <br/>
 
-
 <img src="output/brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <a href="output/processed/brnk74_std.jpg"><img src="output/processed/brnk74_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""></a>
@@ -384,11 +377,12 @@ upsampled and processed.
 <a href="output/processed/brnk73b_std.jpg"><img src="output/processed/brnk73b_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""></a>
 <br/>
 
+<!--
 <img src="output/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_suki1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <a href="output/processed/suki_high-resolution1_std.jpg"><img src="output/processed/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""></a>
 <br/>
-
+-->
 
 <img src="output/l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
@@ -401,16 +395,17 @@ upsampled and processed.
 <img src="output/pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <a href="output/processed/pippa-port38-75mm_std.jpg"><img src="output/processed/pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""></a>
+<!--
 <br/>
 <img src="output/paint_5816_input_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_paint_5816_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt=""> &lt;- computer generated face
-
+-->
 <!--<br/>
 <img src="output/paint_5833_input_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 <img src="output/ai_output1_paint_5833_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1" title="" alt="">
 -->
 <p>
-If you have not clicked on a processed image to see the high resolution (about 3000x3000 pixel image) suitable for printing or you would just like to see these and a few more <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
+If you have not clicked on a processed image to see the high resolution (approximately 3000x3000 pixels) or you would just like to see these and a few more <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
 </p>
 <hr>
 </center>
