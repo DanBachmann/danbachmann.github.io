@@ -38,7 +38,8 @@
 </head>
 <body bgcolor="#dbdbdb" color="black">
 Computational Creativity Project
-<h1>Face pAInt</h1>
+. <i>This is a showcase page and not the official project report though the report will refer to this page for example output.</i>
+<h1 id="top">Face pAInt</h1>
 <table width="100%"><tr><td width="33%" valign="top">
 <h2 id="overview">Overview</h2>
 <p>The aim of this project was to create/assist with generative fine-art using 
@@ -54,23 +55,30 @@ This system touches on all of these points: intense face painting images, multip
 </p>
 
 <h3>Sections</h3>
+<center>
 <table><tr>
+<td align="center">
+<a href="#process"><img src="masks/mask_liquid_3_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Process</a>
+</td>
 <td align="center">
 <a href="#eval"><img src="paint_5913_pattern_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Evaluation</a>
 </td>
+</tr><tr>
 <td align="center">
 <a href="#value"><img src="paint_7000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added: Models</a>
 </td>
 <td align="center">
 <a href="#datasets"><img src="paint_7000_depth_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Value Added: Datasets</a>
 </td>
+</tr><tr>
 <td align="center">
-<a href="#output"><img src="Paint_7000_output_mask.png" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Post Processing</a>
+<a href="#post"><img src="Paint_7000_output_mask.png" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Post Processing</a>
 </td>
 <td align="center">
 <a href="#output"><img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""><br>Example Output</a>
-</td></tr></table>
-
+</td>
+</tr></table>
+</center>
 </td><td width="67%">
 <a href="https://www.flickr.com/photos/danbachmann/20592795906/in/album-72157633520086598" title="photo inspired"><img src="https://live.staticflickr.com/5694/20592795906_6b40b68a67_w.jpg" width="400" height="155"/></a>
 studio inspiration and processed system outputs below<br>
@@ -80,16 +88,32 @@ studio inspiration and processed system outputs below<br>
 </td>
 </tr></table>
 
+
 <hr>
+<h2 id="process">Process</h2>
+<center>
+    <i>placeholder</i>
+</center>
+<hr>
+<h2 id="eval">Evaluation</h2>
+<center>
+    <i>placeholder</i>
+</center>
+<hr>
+
 <h2 id="value">Value Added</h2>
 <h3>Trained models</h3>
 
 <center>
+<h4>ControlNet</h4>
+This was trained on 512x512px images and the corresponding depthmaps with the goal of maintaining pixel level accuracy in reconstruction. Later was discovered that Stable Diffusion ignores the custom ControlNet when using IPix2Pix. This was confirmed with experiments. On the upside, the base of Stable Diffusion 1.5 has training on faces and the three dimensional concept was essentially provided.
 <table><tr>
 <td><a href="Paint_7000_input.png"><img src="Paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td><td><a href="Paint_7000_depth.png"><img src="Paint_7000_depth.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td></tr></table>
 <a href="https://drive.google.com/drive/u/0/folders/1uHhm9OwB-LW42UrGcgWtnGIWLOHUps6U">ControlNet model download (Google Drive)</a>
+<h4>InstructPix2Pix (IP2P)</h4>
+To learn the effect of painting on a face, an InstructPix2Pix (IP2P) UNet model was trained. This would be used in Stable Diffusion 1.5 for execution. IP2P could be used efficiently without per inference fine tuning. During training, it was given a 512x512px face image without "paint", the painted face and a prompt which describe the image such as "An Indian woman with intricate face painting with some skin showing through." All of the face paint was applied via an opacity mask so that feathering of the texture along the hairline and on the neck would appear natural rather than an abrupt painted image. The output would be the generated 512x512px image.
 <table><tr>
 <td><a href="Paint_7000_input.png"><img src="Paint_7000_input.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
 </td><td><a href="Paint_7000_target.png"><img src="Paint_7000_target.png" vspace="5" hspace="5" width="256" height="256" border="1" alt=""></a>
@@ -98,6 +122,7 @@ studio inspiration and processed system outputs below<br>
 <a href="https://colab.research.google.com/drive/1nJLatBqBqLD4LPRU1PlyMFi6fePIHkw-?usp=sharing">How to use (Colab notebook)</a>
 </center>
 <h3 id="patterns">Face Paint Patterns</h3>
+<center>
 <b>pmgid#</b> indicates the code which was embeded in the description during training.
 <br>
 <h4>random/algorithmically generated</h4>
@@ -343,11 +368,9 @@ The datasets are diversive with the figures used. Some of the faces in the model
 <a href="paint_5001_input_std.jpg"><img src="paint_5001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
 <a href="paint_7001_input_std.jpg"><img src="paint_7001_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
 <a href="paint_8000_input_std.jpg"><img src="paint_8000_input_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1" alt=""></a>
-</center>
 
 <hr>
-
-
+</center>
 <h2 id="output">Output</h2>
 <center>
 These faces are original photographs and not part of the training datasets. The images show the
@@ -408,6 +431,15 @@ and the final version after upsampling and final processing.
 If you have not clicked on a processed image to see the high resolution (approximately 3000x3000 pixels) or you would just like to see these and a few more <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
 </p>
 <hr>
+</center>
+
+<h2 id="post">Post Processing</h2>
+<center>
+    <i>placeholder</i>
+</center>
+<hr>
+<center>
+<a href="#top">back to top</a>
 </center>
 
 </body>
