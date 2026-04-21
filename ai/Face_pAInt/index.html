@@ -49,7 +49,8 @@ Images are the artefacts which can be a upscaled to high resolution as a final i
 </p><p>
 The motivation for this project was to create vibrant portraits using the look of paint on a face. Inspiration had come from images on-line; however, many of the most vibrant ones were clearly AI. I wanted to do this using real people. It reminded me of a photo shoot in the past with a make-up artist experimenting. I didn't know what would come out of the changing room. In post production I could do more, but I was limited to working on a 2d plane, where a true make-up artist worked on a 3d face.
 </p><p>
-This system touches on all of these points: intense face painting images, multiple random variations on a single pose and near pixel bound output so the output can be pulled into layers for further artistic expression maintaining the 3d feeling. The best post-production steps could be bright into the output pipeline later.
+This system touches on all of these points: intense face painting images, multiple random variations on a single pose and near pixel bound output so the output can be pulled into layers for further artistic expression maintaining the 3d feeling. The best post-production steps 
+have been implemented in code and are part of the system after image generation.
 </p>
 
 <h3>Sections</h3>
@@ -89,16 +90,44 @@ studio inspiration and processed system outputs below<br>
 
 <hr>
 <h2 id="process">Process</h2>
+<div style="margin-right:10%;margin-left:10%;">
+    <p>
+        From a user's perspective, a 512x512 pixel portrait image is the primary input. To influence the face painting, a pattern picture along with a text prompt are specified. Inference parameters (guidance scales, etc) control how strong the face painting will be and how random the pattern or derivation from the original face structure.
+</p><p>
+The system employs a fine-tuned InstructPix2Pix (IP2P) UNet trained on a custom face-painting dataset to generate an image with the applied effect. At inference, the UNet operates within a Stable Diffusion 1.5 pipeline where it replaces the standard SD1.5 UNet. An image-prompt adapter is additionally attached to the pipeline to control the subtle balance between text prompt and the image. A parameter search grid was created to show the impact of the inference parameters.
+</p><p>
+Ultimately the goal was to achieve print level resolution. Rather than handling fine details employing a learned super-resolution model, the system transfers high-frequency detail from the original high-resolution photograph into the upscaled generated output via frequency separation. This was originally crafted in photo editing software, then codified for the notebook. This preserves authentic skin texture and photographic detail while retaining the generated paint structure, avoiding the risk of learned upscalers suppressing the stylistic modifications.
+</p><p>
+512x512 pixel image outputs come directly from the pipeline which can be displayed in the notebook or within a Gradio app where the user can experiment with the paint pattern influence via images and controls. Post-processing is included in the system which allows the user (both in the notebook and application) to see different combinations colour/luminosity in a parameter grid to experience different weights/moods of the effect.
+</p>
+</div>
 <center>
     <a href="gui/data_flow.png"><img src="gui/data_flow.png" height="250"></a>
+    <br><i>
+    * Photo qualit upscaling is currently only in the Colab cells, not the Gradio app.
+The postprocessing could also be achived in photo editing software if the user prefers.</i>
+
     <!--
     https://mermaid.live/edit#pako:eNp9U9tu00AQ_ZXRPpUqSds0aRMLVaS51b0akvIA4WFrj5OV7F2zu26bVv0E4A0JhMQrn8ADX8MPwCcwa7chqRCWbPnsnD0zc2b3loUqQuaxarU6kaGSsZh6EwmQ8LnKrQexuMZoIotwnKircMa1heMXxDH5xVTzbAb-aXA-Hr2eMF9muTUT9sYplE-Hln9__fjj1_cPEChtNRcW_JRPcYW2X9Def4OAW4ta_oPSJcrPL--c0BivLQRapZldofQc5fMnRxmFPEFS0zxFEjRPL_Temh_ABgxzEXEZIv2OLGbmyb0Eymi5qZOzXv-Y9IYoUXMrLhFOyKpkJWGfCC87fehLZ6NeiQ0oNqZ2JUYuuR_UAzg_xdWKh861oNqJeGYf7T-41-7hsvajKoOz0Zh4gTIWliolb0I0RsjpiqRP1K5KVK6p-eM8FdIZ4aobYYKhFUqu8A-d9ExZBc9zngg7d9TzzJC3JL2-UpKbNVSre9AvwX4BhiXoFmBQgt4y6C-D4TIYFOCgBAcFOFo-TOSsxWhxqNYWgwQ4Kth-CfwCHJZAbpHEOpRNvS2agvyhIRAGwlxrlDaZg5L0ERLsDIFM4xcQYpKYCkhli8Wh5pFQwLOs5nxxbydJIHOzmP6dhcPZYh4QcgkXCDycCbyk-ilDVlSDkbCOYFRsr7gmioEryliIrw39k2CjE8dC0hjK-jeKr5mpbANtWHb_0OWzWzAznqEHlu7KXbls7JzuRAdiJW3ViBv06o3sejk2-E_s6FGMVdhUi4h5VudYYSnqlDvIbt2uCSOLUrrBHv1GGPM8oZM_kXe0LePylVLpw06t8umMeTFPDKE8i7jFnuB0wNPFKs2E7kBX5dIyr1kvNJh3y64JNXdrjXqzXm-02812e3e3wubM22q3a_X6VrO12drabm83dlp3FXZTZN2s7TR3G5ubjVar1dxuNBs7d38ADKuYuQ
     -->
 </center>
 <hr>
 <h2 id="eval">Evaluation</h2>
+<div style="margin-right:10%;margin-left:10%;">
+The system has generative autonomy over paint-style makeup and its application to a portrait, within constraints that preserve photographic realism - motivated by compositing into editorial print, as if collaborating with an experimental MUA. Using the FACE model: 
+<ul>
+<li>Eg: A portrait with a creative pattern applied.	 	</li>
+<li>Cg: A system generating a pattern and allowing adjustment before applying. 	</li>
+<li>Ag: Colton's Creativity Tripod (skill, appreciation, imagination) -&gt; Is the output worthy of printing/presenting to others/entertaining to look at?</li>
+<li>Fg: A portrait image and pattern image influencing the design.</li>
+</ul>
+<p/>
+
+Final results were surveyed with 8 others, confirming appreciation was not exclusive to the creator. On ethics, it keeps the photographer as a partner with the machine in this creative process.
+A visual analysis was conducted mid-training to confirm the model was contributing. Observations below.
+</div>
 <center>
-<br>
+
 <table><tr><td valign="top">
 <table><tr>
     <td>pattern to influence paint</td>
@@ -134,10 +163,71 @@ studio inspiration and processed system outputs below<br>
 </tr>
 </table>
 </td></tr></table>
-These <a href="https://colab.research.google.com/drive/14eagF7VNtg0Wa2-MElKthsj3P2ty9MqG?usp=sharing">evalations are open and reproducable in this Jupyter notebook. [click to open in Colab]</a>
-</center>
-<hr>
 
+<div style="margin-right:10%;margin-left:10%;">
+During the final evaluation it was found that lower IP-Adapter scales produced stronger baseline outputs2. These would not be suitable for the intented intactive post processing due to colourful backgrounds coming into the scene and the lack of near pixel level accuracy with the original image. Guiding this with prompts led to the whole pattern becoming neutral grey.
+</div>
+<a href="evaluation/evalipa050.png"><img src="evaluation/evalipa050.png" height="300"></a>
+<a href="evaluation/evalipa050grey.png"><img src="evaluation/evalipa050grey.png" height="300"></a>
+<p/>
+Scientific evaluation used 240 untrained face pairs at IP-Adapter scale 0.50. The Fréchet Inception Distance scored ~46  for both models, likely reflecting the small validation set. Other scores were more revealing.
+<br>
+<table style="border-collapse: collapse; ">
+  <thead>
+    <tr style="background-color: #2c3e50; color: white;">
+      <th style="padding: 10px 14px; text-align: left; border: 1px solid #ccc;">Metric</th>
+      <th style="padding: 10px 14px; text-align: center; border: 1px solid #ccc;">Custom</th>
+      <th style="padding: 10px 14px; text-align: center; border: 1px solid #ccc;">Baseline</th>
+      <th style="padding: 10px 14px; text-align: left; border: 1px solid #ccc;">Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">SSIM vs target</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc; color: #27ae60; font-weight: bold;">0.857</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc;">0.590</td>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">Custom outputs are ~45% more structurally similar to the target</td>
+    </tr>
+    <tr>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">PSNR vs target</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc; color: #27ae60; font-weight: bold;">24.2 dB</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc;">13.1 dB</td>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">~11 dB improvement in pixel-level accuracy</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">SSIM vs input</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc; color: #27ae60; font-weight: bold;">0.887</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc;">0.618</td>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">Custom model preserves the face structure better</td>
+    </tr>
+    <tr>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">LPIPS vs target</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc; color: #27ae60; font-weight: bold;">0.119</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc;">0.463</td>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">Custom outputs are more perceptually similar to targets</td>
+    </tr>
+    <tr style="background-color: #f9f9f9;">
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">CLIP score</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc;">0.286</td>
+      <td style="padding: 9px 14px; text-align: center; border: 1px solid #ccc; color: #27ae60; font-weight: bold;">0.304</td>
+      <td style="padding: 9px 14px; border: 1px solid #ccc;">Baseline aligns slightly better with the text prompt</td>
+    </tr>
+  </tbody>
+</table>
+<table width="90%">
+    <tr>
+        <td width="45%">baseline scores</td>
+        <td width="45%">trained model scores</td>
+    </tr>
+    <tr>
+        <td><a href="evaluation/scores_baseline.png"><img src="evaluation/scores_baseline.png" height="300"></a></td>
+        <td><a href="evaluation/scores_trained.png"><img src="evaluation/scores_trained.png" height="300"></a></td>
+    </tr>
+</table>
+<p/>
+These <a href="https://colab.research.google.com/drive/14eagF7VNtg0Wa2-MElKthsj3P2ty9MqG?usp=sharing">evalations are open and reproducable in this Jupyter notebook. [click to open in Colab]</a>
+<hr>
+</center>
 <h2 id="value">Value Added</h2>
 <h3>Trained models</h3>
 
@@ -411,8 +501,10 @@ A light weight casual creator application/GUI has been created for interactive e
     <a href="gui/tab1.png"><img src="gui/tab1.png" height="175"></a>
     <a href="gui/tab2.png"><img src="gui/tab2.png" height="175"></a>
 <br>
+<!--
 <a href="https://258ecce9550e7b71b9.gradio.live" target="_blank">This hosted demo will run until 26 April 2026.</a>
 You can still run it in the notebook if this link has expired.
+-->
 <hr>
 </center>
 <h2 id="output">Output</h2>
@@ -421,7 +513,12 @@ These faces are original photographs and not part of the training datasets. The 
 original photo,
 model output,
 and the final version after upsampling and final processing.
+<br/>All photographs taken and (c)Dan Bachmann (me) with the exception of those of me which have been taken by <a href="https://www.nickgregan.com/" target="_blank">Nick Gregan</a>.
 <br/>
+<!--
+<h3>First batch of generated images with final processing in photo editing software</h3>
+<h3>First batches with post processing done in automatically in code</h3>
+-->
 <img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <a href="output/processed/ldan0277_std.jpg"><img src="output/processed/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
@@ -444,13 +541,6 @@ and the final version after upsampling and final processing.
 <a href="output/processed/brnk73b_std.jpg"><img src="output/processed/brnk73b_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
 <br/>
 
-<!--
-<img src="output/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
-<img src="output/ai_output1_suki1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
-<a href="output/processed/suki_high-resolution1_std.jpg"><img src="output/processed/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
-<br/>
--->
-
 <img src="output/l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <img src="output/ai_output1_l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <a href="output/processed/l1001746_std.jpg"><img src="output/processed/l1001746_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
@@ -462,6 +552,12 @@ and the final version after upsampling and final processing.
 <img src="output/pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <img src="output/ai_output1_pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <a href="output/processed/pippa-port38-75mm_std.jpg"><img src="output/processed/pippa-port38-75mm_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
+<!--
+<img src="output/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
+<img src="output/ai_output1_suki1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
+<a href="output/processed/suki_high-resolution1_std.jpg"><img src="output/processed/suki_high-resolution1_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
+<br/>
+-->
 <!--
 <br/>
 <img src="output/paint_5816_input_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
@@ -476,10 +572,14 @@ If you have not clicked on a processed image to see the high resolution (approxi
 </p>
 <hr>
 </center>
-
+    <img src="Paint_7000_output_mask.png" align="left" height="128">
 <h2 id="post">Post Processing</h2>
 <center>
-    <i>placeholder</i>
+    Post processing was first done in a paint program, but has now been moved into the notebook and mostly into the UX/app as well.
+    By separating the output into colour and luminousity layers, some of the defects around the eyes are less visible.
+    The generated layer output is then sandwiched between the low and high frequencies of the original image for full resolution detail.
+    <br>
+    The post processing is purely computational so the system doesn't require regeneration of the image/paint effect for adjustments to luminance, colour or sharpness.
 </center>
 <hr>
 <center>
