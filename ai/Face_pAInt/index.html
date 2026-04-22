@@ -71,10 +71,10 @@ have been implemented in code and are part of the system after image generation.
 </td>
 </tr><tr>
 <td align="center">
-<a href="#post"><img src="Paint_7000_output_mask.png" vspace="5" hspace="5" width="125" height="125" border="1"><br>Post Processing</a>
+<a href="#post"><img src="Paint_7000_output_mask.png" vspace="5" hspace="5" width="125" height="125" border="1"><br>Post Generation</a>
 </td>
 <td align="center">
-<a href="#output"><img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="125" height="125" border="1"><br>Example Output</a>
+<a href="#output"><img src="output/DanByNickGregan06_generated1.png" vspace="5" hspace="5" width="125" height="125" border="1"><br>Example Output</a>
 </td>
 </tr></table>
 </center>
@@ -506,19 +506,51 @@ A light weight casual creator application/GUI has been created for interactive e
 You can still run it in the notebook if this link has expired.
 -->
 <hr>
+<h2 id="post">Post Generation Processing</h2>
+<center>
+    Post processing was first done in a paint program, but has now been moved into the notebook and mostly into the UX/app as well.
+    By separating the output into colour and luminousity layers, some of the defects around the eyes are less visible.
+    The generated layer output is then sandwiched between the low and high frequencies of the original image for full resolution detail.
+    <br>
+    The post processing is purely computational so the system doesn't require regeneration of the image/paint effect for adjustments to luminance, colour or sharpness.
+    <br>
+    <img src="Paint_7000_input_thm.jpg">
+    +
+    <img src="Paint_7000_output_mask.png" height="256">
+    =
+    <img src="Paint_7000_target_thm.jpg">
+</center>
+<hr>
+
 </center>
 <h2 id="output">Output</h2>
 <center>
 These faces are original photographs and not part of the training datasets. The images show the
 original photo,
 model output,
-and the final version after upsampling and final processing.
+and the final version after post generative processing.
 <br/>All photographs taken and (c)Dan Bachmann (me) with the exception of those of me which have been taken by <a href="https://www.nickgregan.com/" target="_blank">Nick Gregan</a>.
 <br/>
 <!--
 <h3>First batch of generated images with final processing in photo editing software</h3>
 <h3>First batches with post processing done in automatically in code</h3>
 -->
+<img src="output/DanByNickGregan06.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<img src="output/DanByNickGregan06_generated.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<a href="output/DanByNickGregan06_highres.png"><img src="output/DanByNickGregan06_highres.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
+<br/>
+<img src="output/DanByNickGregan06.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<img src="output/DanByNickGregan06_generated1.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<a href="output/DanByNickGregan06_highres1.png"><img src="output/DanByNickGregan06_highres1.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
+<br/>
+<img src="output/DanByNickGregan02.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<img src="output/DanByNickGregan02_generated.png" vspace="5" hspace="5" width="512" height="512" border="1">
+<a href="output/DanByNickGregan02_highres.png"><img src="output/DanByNickGregan02_highres.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
+<br/>
+The three images of me above are directly from the demo notebook running the high resolution bactch with automatic upscaling and post processing. Notice the improvement to the eye lids. The paint generation has been set to high intensity settings/pattern to demonstrate the capabilities.
+<br/>
+The images below were done using paint software before the automatic post processing was added to the notebook. Some final editing is likely to be done for a final presentation; however, the automation added to the system vastly reduces the time and effort required to set up the layers.
+<br/>
 <img src="output/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <img src="output/ai_output1_ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1">
 <a href="output/processed/ldan0277_std.jpg"><img src="output/processed/ldan0277_thm.jpg" vspace="5" hspace="5" width="512" height="512" border="1"></a>
@@ -571,18 +603,7 @@ and the final version after upsampling and final processing.
 If you have not clicked on a processed image to see the high resolution (approximately 3000x3000 pixels) or you would just like to see these and a few more <a href="output/processed/index.htm">processed images together, please visit this page</a>. Notice the skin texture coming through the paint.
 </p>
 <hr>
-</center>
-    <img src="Paint_7000_output_mask.png" align="left" height="128">
-<h2 id="post">Post Processing</h2>
-<center>
-    Post processing was first done in a paint program, but has now been moved into the notebook and mostly into the UX/app as well.
-    By separating the output into colour and luminousity layers, some of the defects around the eyes are less visible.
-    The generated layer output is then sandwiched between the low and high frequencies of the original image for full resolution detail.
-    <br>
-    The post processing is purely computational so the system doesn't require regeneration of the image/paint effect for adjustments to luminance, colour or sharpness.
-</center>
-<hr>
-<center>
+
 <a href="#top">back to top</a>
 </center>
 
