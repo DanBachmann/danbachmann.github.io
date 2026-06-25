@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Brain Segmentation</title>
+        <title>Brain Tissue Segmentation</title>
     </head>
     <body bgcolor="#dbdbdb" color="black">
-        <h1>Brain Segmentation</h1>
-        <img src="ai/Brain_Seg/images/MRIseg.png" height="128">
+        <h1>Few Shot Brain Tissue Segmentation Deep Learning</h1>
+        <img src="images/MRIseg.png" height="256">
         <table width="99%">
-            <tr>
-                <th>Class</th>
-                <th>Dice Score</th>
-            </tr>
             <tr>
                 <td width="50%"><img src="images/class_distribution_barchart.png" width="95%"></td>
                 <td width="50%"><img src="images/class_distribution_heatmap.png" width="95%" alt="Class Distribution"></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>Why did your best model outperform the baseline?</td>
+                <td><ul>
+                    <li>
+                        Class-aware loss (α=0.5 Dice+CE weighting) addressed the 66:1 imbalance ratio between largest and smallest classes, improving CSF segmentation most (+0.043 Dice on validation)
+                    </li>
+                    <li>
+                        Denser patch sampling (150 vs 100 patches/subject) provided better coverage of rare structures without overfitting, acting as implicit augmentation.
+                    </li>
+                    <li>
+                        Smaller in-plane patches (64×64 vs 96×96) reduced memory pressure, allowing batch size 8 instead of 2-5, which stabilized gradient estimates.
+                    </li>
+                </ul></td>
             </tr>
         </table>
         <center>
